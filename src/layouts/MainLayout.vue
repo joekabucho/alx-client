@@ -3,7 +3,11 @@
 
     <q-header  class="bg-white text-black">
       <q-toolbar>
-          <q-input rounded standout="bg-dark" label="Search" class="search">
+        <q-btn dense flat round icon="menu" class="flat-icon" @click="left = !left" />
+        <q-toolbar-title>
+        <h4 class="Test lt-md">Test</h4>
+        </q-toolbar-title>
+        <q-input rounded standout="bg-dark" label="Search" class="search gt-sm">
             <template v-slot:prepend>
               <q-icon name="search" />
             </template>
@@ -14,7 +18,7 @@
             label="Live"
             size="xl"
           />
-          <div class="q-pa-md">
+          <div class="q-pa-md gt-sm">
               <q-btn-dropdown   no-caps  class="language-dropdown" label="English" dropdown-icon="fas fa-chevron-down">
                 <q-list>
                   <q-item clickable v-close-popup @click="onItemClick">
@@ -37,10 +41,10 @@
                 </q-list>
               </q-btn-dropdown>
             </div>
-        <q-icon name="notifications" size="md" class="notification">
+        <q-icon name="notifications gt-sm" size="md" class="notification">
           <span class="badge"></span>
         </q-icon>
-        <div class="q-pa-md">
+        <div class="q-pa-md gt-sm">
 
           <q-avatar rounded>
             <img src="../assets/images/pfl.png" alt="profile pic"/>
@@ -59,8 +63,8 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer show-if-above v-model="left" side="left" >
-      <h4 class="Test q-pa-lg">Test</h4>
+    <q-drawer show-if-above v-model="left" side="left" :width="327">
+      <h4 class="Test q-pa-xl gt-sm">Test</h4>
       <div class="q-pa-md" style="max-width: 350px">
         <q-expansion-item  no-caps  class="dropdown-sidenav" label="Payments" dropdown-icon="fa fa-caret-down">
         <q-list>
