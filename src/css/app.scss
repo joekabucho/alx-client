@@ -100,6 +100,74 @@ hr {
 .flat-icon{
   display: none;
 }
+.sidenav-child{
+  width: 91px;
+  height: 17px;
+  flex-grow: 0;
+  margin: 3px 0 4px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #828282;
+}
+.chat-bar {
+  border-radius: 11px 0 181px 90px;
+  background-color: #f9f9f9;
+}
+.center-title {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.tabs-text {
+  color: #828282;
+  font-size: 16px;
+  font-weight: bolder;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+}
+.sidebar-card {
+  border-radius: 50px 0 0 0;
+  width: 324px;
+  height: 754px;
+  background-color: #f9f9f9;
+  box-shadow: none;
+}
+.card-badge {
+  width: 35px;
+  height: 35px;
+  flex-grow: 0;
+  padding: 7px 10.5px 6px 11px;
+  border-radius: 10.8px;
+  right: 0;
+}
+.card-date{
+  width: 60px;
+  height: 10px;
+  margin: 14px 0 27px 83px;
+  font-size: 8px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #bdbdbd;
+}
+.my-card {
+  color: #bdbdbd;
+  border-radius: 20px;
+  box-shadow: none;
+
+}
 @media (max-width: 907px) {
   .flat-icon{
     display: inline;
