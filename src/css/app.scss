@@ -168,6 +168,66 @@ hr {
   box-shadow: none;
 
 }
+.intro-header {
+  width: 85px;
+  height: 22px;
+  flex-grow: 0;
+  margin: 0 0 0 10px;
+  font-size: 18px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffa14e;
+  bottom: 0;
+
+}
+.intro-title {
+  width: 303px;
+  height: 29px;
+  margin: 21px 100px 41px 36px;
+  font-size: 24px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #1f1f1f;
+
+}
+.chart-card {
+  width: 747px;
+  height: 1000px;
+  flex-grow: 0;
+  margin: 24px 0 0;
+  padding: 32px 40px 36px 32px;
+  border-radius: 40px;
+  border: solid 1px #f2f2f2;
+}
+.info-card{
+  width: 344px;
+  height: 364px;
+  flex-grow: 0;
+  padding: 24px 51px 24px 40px;
+  border-radius: 40px;
+  border: solid 1px #f2f2f2;
+}
+.chart-dropdown{
+  flex-grow: 0;
+  font-size: 16px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #828282;
+  border: none;
+}
+
 @media (max-width: 907px) {
   .flat-icon{
     display: inline;
