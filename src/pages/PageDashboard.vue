@@ -27,16 +27,19 @@
             </q-item-section>
           </q-item>
         </q-list>
-      </q-btn-dropdown>    </div>
+      </q-btn-dropdown>
+    </div>
     <div class="row flex-inline">
       <q-card class="chart-card col-lg-12">
         <q-card-section>
+            <BarChart/>
         </q-card-section>
       </q-card>
     </div>
     <div class="row flex-inline">
       <q-card class="info-card col-lg-6">
         <q-card-section>
+          <DoughnutChart/>
         </q-card-section>
       </q-card>
       <q-card class="info-card col-lg-6">
@@ -48,7 +51,14 @@
 </template>
 
 <script>
+import BarChart from '../components/BarChart'
+import DoughnutChart from '../components/doughnutChart'
+
 export default {
-  name: 'PageDashboard'
+  name: 'PageDashboard',
+  components: {
+    BarChart,
+    DoughnutChart,
+  }
 }
 </script>
