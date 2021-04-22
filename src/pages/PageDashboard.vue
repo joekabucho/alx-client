@@ -29,21 +29,77 @@
         </q-list>
       </q-btn-dropdown>
     </div>
-    <div class="row flex-inline">
-      <q-card class="chart-card col-lg-12">
+    <div class="row flex-inline ">
+      <q-card class="chart-card col-lg-12 bar-card">
         <q-card-section>
             <BarChart/>
         </q-card-section>
       </q-card>
     </div>
+    <br>
+    <br>
     <div class="row flex-inline">
       <q-card class="info-card col-lg-6">
-        <q-card-section>
+        <q-card-section>  overflow: hidden;
+
+          <p class="siccess-rate">Success Rate</p>
           <DoughnutChart/>
+          <div class="row flex-inline justify-center">
+            <q-badge text-color="black" class="doughnut-uns"/>
+            <p class="success-number">1</p><br>
+            <q-badge text-color="black" class="doughnut-succ"/>
+            <p class="success-number">150</p>
+          </div>
+          <div class="row flex-inline justify-center">
+            <p class="success-footer">Unsuccessfull</p>
+            <p class="success-footer"></p>
+            <p class="success-footer">Successfull</p>
+          </div>
         </q-card-section>
       </q-card>
       <q-card class="info-card col-lg-6">
         <q-card-section>
+          <p class="siccess-rate">Payment Issues</p>
+          <PaymentChart/>
+          <div class="row flex-inline">
+          <p class="error-rate">Total number of errors:19</p>
+          </div>
+          <q-list dense>
+            <q-item clickable v-ripple>
+              <q-item-section>
+                <div class="row flex-inline">
+                <q-badge class="badge-li-1" text-color="white" label="a" />
+                  <p class="payment-li"> customer errors</p>
+                </div>
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section>
+                <div class="row flex-inline">
+                <q-badge class="badge-li-2" text-color="white" label="x" />
+                  <p class="payment-li">Fraud blocks</p>
+                </div>
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-ripple>
+              <q-item-section>
+                <div class="row flex-inline">
+                <q-badge class="badge-li-3" text-color="white" label="o" />
+                  <p class="payment-li">Bank Errors</p>
+                </div>
+              </q-item-section>
+            </q-item>
+            <q-item clickable v-ripple>
+              <q-item-section>
+                <div class="row flex-inline">
+                <q-badge class="badge-li-4" text-color="white" label="n" />
+                  <p class="payment-li">System Errors</p>
+                </div>
+              </q-item-section>
+            </q-item>
+          </q-list>
         </q-card-section>
       </q-card>
     </div>
@@ -53,12 +109,15 @@
 <script>
 import BarChart from '../components/BarChart'
 import DoughnutChart from '../components/doughnutChart'
+import PaymentChart from '../components/PaymentChart'
+
 
 export default {
   name: 'PageDashboard',
   components: {
     BarChart,
     DoughnutChart,
+    PaymentChart,
   }
 }
 </script>

@@ -15,6 +15,8 @@ export const barChartData = {
   options: {
     responsive: true,
     lineTension: 1,
+    width: '10px',
+    height: '600px',
     scales: {
       yAxes: [
         {
