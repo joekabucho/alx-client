@@ -24,35 +24,26 @@
           <div class="q-pa-md gt-sm">
               <q-btn-dropdown   no-caps  class="language-dropdown" label="English" dropdown-icon="fas fa-chevron-down">
                 <q-list>
-                  <q-item clickable v-close-popup @click="onItemClick">
+                  <q-item clickable v-close-popup @click="onItemClick"
+                          v-for="language in languages"
+                          v-bind:key="language.id"
+                          :data-testid="'language-' + language.id">
                     <q-item-section>
-                      <q-item-label>Swahili</q-item-label>
-                    </q-item-section>
-                  </q-item>
-
-                  <q-item clickable v-close-popup @click="onItemClick">
-                    <q-item-section>
-                      <q-item-label>Spanish</q-item-label>
-                    </q-item-section>
-                  </q-item>
-
-                  <q-item clickable v-close-popup @click="onItemClick">
-                    <q-item-section>
-                      <q-item-label>German</q-item-label>
+                      <q-item-label>{{language.name}}</q-item-label>
                     </q-item-section>
                   </q-item>
                 </q-list>
               </q-btn-dropdown>
             </div>
         <q-icon name="notifications" size="md" class="notification gt-sm">
-          <span class="badge gt-sm"></span>
+          <span class="badge gt-sm" v-if="notifications.length!==0"></span>
         </q-icon>
         <div class="q-pa-md gt-sm">
 
           <q-avatar rounded class="profile-pic">
             <img src="../assets/images/pfl.png" alt="profile pic" />
           </q-avatar>
-          <q-btn-dropdown  no-caps  class="user-dropdown"  dropdown-image="../assets/images/pfl.png" label="User name Test"  dropdown-icon="fas fa-chevron-down" >
+          <q-btn-dropdown  no-caps  class="user-dropdown"  dropdown-image="../assets/images/pfl.png" :label="users[0].username"  dropdown-icon="fas fa-chevron-down" >
             <q-list>
 
               <q-item clickable v-close-popup @click="onItemClick">
@@ -172,66 +163,31 @@
                   <q-carousel-slide name="style" class="column no-wrap flex-center">
                     <q-icon name="fas fa-users" size="56px" />
                     <div class="q-mt-md text-center">
-                     Users: {{ users }}
+                     Users: {{ stats[0].users }}
                     </div>
                   </q-carousel-slide>
                   <q-carousel-slide name="tv" class="column no-wrap flex-center">
                     <q-icon name="fas fa-money-bill-wave" size="56px" />
                     <div class="q-mt-md text-center">
-                      Payments: {{ payments }}
+                      Payments: {{ stats[0].payments }}
                     </div>
                   </q-carousel-slide>
                   <q-carousel-slide name="layers" class="column no-wrap flex-center">
                     <q-icon name="fas fa-door-open" size="56px" />
                     <div class="q-mt-md text-center">
-                     Visits: {{ visits }}
+                     Visits: {{ stats[0].visits }}
                     </div>
                   </q-carousel-slide>
                   <q-carousel-slide name="map" class="column no-wrap flex-center">
                     <q-icon name="fas fa-exclamation-triangle" size="56px" />
                     <div class="q-mt-md text-center">
-                      Errors: {{ errors }}
+                      Errors: {{ stats[0].errors }}
                     </div>
                   </q-carousel-slide>
                 </q-carousel>
               </q-tab-panel>
 
               <q-tab-panel name="two">
-                <q-card class="my-card" flat bordered>
-                  <div class="row  q-pa-sm">
-                  <q-badge color="orange" class="card-badge">22</q-badge>
-                    <p class="card-date">Jan 2,12:31pm</p>
-                  </div>
-                  <q-card-section>
-                    <div class="text-h5 q-mt-sm q-mb-xs">James Robinson</div>
-                    <div class="text-caption text-grey">
-                      I need some maintainance..
-                    </div>
-                  </q-card-section>
-
-                  <q-card-actions>
-
-                    <q-space />
-
-                    <q-btn
-                      color="grey"
-                      round
-                      flat
-                      dense
-                      :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
-                      @click="expanded = !expanded"
-                    />
-                  </q-card-actions>
-
-                  <q-slide-transition>
-                    <div v-show="expanded">
-                      <q-separator />
-                      <q-card-section class="text-subitle2">
-                        {{ lorem }}
-                      </q-card-section>
-                    </div>
-                  </q-slide-transition>
-                </q-card>
                 <div v-if="serverError" data-testid="server-error">
                   {{ serverError }}
                 </div>
@@ -246,13 +202,13 @@
                         :data-testid="'chats-' + chat.id"
                 >
                   <div class="row  q-pa-sm">
-                    <q-badge color="orange" class="card-badge">22</q-badge>
-                    <p class="card-date">Jan 2,12:31pm</p>
+                    <q-badge  :color="chat.color" id="badge"  class="card-badge Badge"> {{chat.username.charAt(0)}}</q-badge>
+                    <p class="card-date">{{chat.datetime}}</p>
                   </div>
                   <q-card-section>
-                    <div class="text-h5 q-mt-sm q-mb-xs">James Robinson</div>
+                    <div class="text-h5 q-mt-sm q-mb-xs">{{chat.username}}</div>
                     <div class="text-caption text-grey">
-                      I need some maintainance..
+                      {{chat.message.slice(0,20)}}...
                     </div>
                   </q-card-section>
 
@@ -274,7 +230,7 @@
                     <div v-show="expanded">
                       <q-separator />
                       <q-card-section class="text-subitle2">
-                        {{ chat.content }}
+                        {{chat.message}}
                       </q-card-section>
                     </div>
                   </q-slide-transition>
@@ -306,13 +262,15 @@ export default {
       value: true,
       tab: 'two',
       expanded: false,
-      lorem: 'I need some maintanance for my car something seems to have broken down somewhere along the way.',
       slide: 'style',
-      users: '20',
-      payments: '50',
-      visits: '500',
-      errors: '200',
       chats: [],
+      languages: [],
+      notifications: [],
+      users: [],
+      stats: [],
+      mycolor: 'primary',
+
+
       serverError: null,
 
     }
@@ -322,7 +280,13 @@ export default {
       // console.log('Clicked on an Item')
     }
   },
+  mounted() {
+    let colors = ['primary', 'secondary', 'accent', 'positive', 'negative'];
+    this.mycolor = colors[Math.floor(Math.random() * colors.length)];
+
+  },
   created() {
+
     fetch("/api/chats")
       .then(res => res.json())
       .then(json => {
@@ -330,6 +294,42 @@ export default {
           this.serverError = json.error
         } else {
           this.chats = json.chats
+        }
+      })
+    fetch("/api/languages")
+      .then(res => res.json())
+      .then(json => {
+        if (json.error) {
+          this.serverError = json.error
+        } else {
+          this.languages = json.languages
+        }
+      })
+    fetch("/api/notifications")
+      .then(res => res.json())
+      .then(json => {
+        if (json.error) {
+          this.serverError = json.error
+        } else {
+          this.notifications = json.notifications
+        }
+      })
+    fetch("/api/users")
+      .then(res => res.json())
+      .then(json => {
+        if (json.error) {
+          this.serverError = json.error
+        } else {
+          this.users = json.users
+        }
+      })
+    fetch("/api/stats")
+      .then(res => res.json())
+      .then(json => {
+        if (json.error) {
+          this.serverError = json.error
+        } else {
+          this.stats = json.stats
         }
       })
   },

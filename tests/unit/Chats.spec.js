@@ -1,4 +1,4 @@
-// src/App.spec.js
+// src/Chats.spec.js
 import { mount } from "@vue/test-utils"
 import { Response } from "miragejs"
 import { makeServer } from "../../src/api/server"
@@ -11,8 +11,8 @@ beforeEach(() => {
 })
 
 it("shows the chats from our server", async () => {
-  server.create("chat", { id: 1, content: "Learn Mirage JS" })
-  server.create("chat", { id: 2, content: "Integrate with Vue.js" })
+  server.create("chat", { id: 1, message: "Learn Mirage JS" })
+  server.create("chat", { id: 2, message: "Integrate with Vue.js" })
 
   const wrapper = mount(App)
 
