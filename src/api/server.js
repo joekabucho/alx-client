@@ -15,10 +15,13 @@ export function makeServer({ environment = "development" } = {}) {
       notification: Model,
       user: Model,
       stat: Model,
+      test: Model,
 
     },
    // making dummy data everytime the server script is called
     seeds(server) {
+      server.create("test", { content: "Hi im just a random  test" })
+      server.create("test", { content: "here to test if everything is okay :)" })
       server.create("chat", {
         username: "James Robinson",
         date_time: "Jan 2,12:30pm",
@@ -67,14 +70,14 @@ export function makeServer({ environment = "development" } = {}) {
         successfull: 150,
       })
       server.create("stat", {
-        users: 1,
         payments: 50,
         visits: 51000,
         errors: 150,
+        user: 1,
 
       })
       server.create("stat", {
-        users: 1,
+        user: 1,
         payments: 50,
         visits: 51000,
         errors: 150,
@@ -119,6 +122,9 @@ export function makeServer({ environment = "development" } = {}) {
       })
       this.get("/stats", schema => {
         return schema.stats.all()
+      })
+      this.get("/tests", schema => {
+        return schema.tests.all()
       })
     },
 

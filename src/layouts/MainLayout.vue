@@ -43,7 +43,7 @@
           <q-avatar rounded class="profile-pic">
             <img src="../assets/images/pfl.png" alt="profile pic" />
           </q-avatar>
-          <q-btn-dropdown  no-caps  class="user-dropdown"  dropdown-image="../assets/images/pfl.png" :label="users[0].username"  dropdown-icon="fas fa-chevron-down" >
+          <q-btn-dropdown  no-caps  class="user-dropdown"  dropdown-image="../assets/images/pfl.png" :label="users.username"  dropdown-icon="fas fa-chevron-down" >
             <q-list>
 
               <q-item clickable v-close-popup @click="onItemClick">
@@ -163,25 +163,25 @@
                   <q-carousel-slide name="style" class="column no-wrap flex-center">
                     <q-icon name="fas fa-users" size="56px" />
                     <div class="q-mt-md text-center">
-                     Users: {{ stats[0].users }}
+                     Users: {{ stats.user }}
                     </div>
                   </q-carousel-slide>
                   <q-carousel-slide name="tv" class="column no-wrap flex-center">
                     <q-icon name="fas fa-money-bill-wave" size="56px" />
                     <div class="q-mt-md text-center">
-                      Payments: {{ stats[0].payments }}
+                      Payments: {{ stats.payments }}
                     </div>
                   </q-carousel-slide>
                   <q-carousel-slide name="layers" class="column no-wrap flex-center">
                     <q-icon name="fas fa-door-open" size="56px" />
                     <div class="q-mt-md text-center">
-                     Visits: {{ stats[0].visits }}
+                     Visits: {{ stats.visits }}
                     </div>
                   </q-carousel-slide>
                   <q-carousel-slide name="map" class="column no-wrap flex-center">
                     <q-icon name="fas fa-exclamation-triangle" size="56px" />
                     <div class="q-mt-md text-center">
-                      Errors: {{ stats[0].errors }}
+                      Errors: {{ stats.errors }}
                     </div>
                   </q-carousel-slide>
                 </q-carousel>
@@ -255,6 +255,7 @@
 
 <script>
 export default {
+  name: "main",
   data () {
     return {
       left: false,
@@ -320,7 +321,7 @@ export default {
         if (json.error) {
           this.serverError = json.error
         } else {
-          this.users = json.users
+          this.users = json.users[0]
         }
       })
     fetch("/api/stats")
@@ -329,7 +330,7 @@ export default {
         if (json.error) {
           this.serverError = json.error
         } else {
-          this.stats = json.stats
+          this.stats = json.stats[0]
         }
       })
   },
