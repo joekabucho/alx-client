@@ -114,10 +114,39 @@ import PaymentChart from '../components/PaymentChart'
 
 export default {
   name: 'PageDashboard',
+  data () {
+    return {
+      payment_issue: [],
+      success_rate: [],
+
+      serverError: null,
+
+    }
+  },
   components: {
     BarChart,
     DoughnutChart,
     PaymentChart,
-  }
+  },
+  created() {
+    fetch("/api/payment_issue")
+      .then(res => res.json())
+      .then(json => {
+        if (json.error) {
+          this.serverError = json.error
+        } else {
+          this.payment_issue = json.payment_issue
+        }
+      })
+    fetch("/api/success_rate")
+      .then(res => res.json())
+      .then(json => {
+        if (json.error) {
+          this.serverError = json.error
+        } else {
+          this.success_rate = json.success_rate
+        }
+      })
+  },
 }
 </script>
