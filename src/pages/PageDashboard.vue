@@ -40,7 +40,7 @@
     <br>
     <div class="row flex-inline">
       <q-card class="info-card col-lg-6">
-        <q-card-section>  overflow: hidden;
+        <q-card-section>
 
           <p class="siccess-rate">Success Rate</p>
           <DoughnutChart/>
@@ -69,7 +69,7 @@
               <q-item-section>
                 <div class="row flex-inline">
                 <q-badge class="badge-li-1" text-color="white" label="a" />
-                  <p class="payment-li"> customer errors</p>
+                  <legend class="payment-li"> customer errors</legend>
                 </div>
               </q-item-section>
             </q-item>
@@ -87,7 +87,7 @@
               <q-item-section>
                 <div class="row flex-inline">
                 <q-badge class="badge-li-3" text-color="white" label="o" />
-                  <p class="payment-li">Bank Errors</p>
+                  <legend class="payment-li">Bank Errors</legend>
                 </div>
               </q-item-section>
             </q-item>
@@ -95,7 +95,7 @@
               <q-item-section>
                 <div class="row flex-inline">
                 <q-badge class="badge-li-4" text-color="white" label="n" />
-                  <p class="payment-li">System Errors</p>
+                  <legend class="payment-li">System Errors</legend>
                 </div>
               </q-item-section>
             </q-item>

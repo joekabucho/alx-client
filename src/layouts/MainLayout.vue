@@ -92,7 +92,7 @@
           <q-item clickable v-ripple>
             <q-item-section avatar>
               <q-icon class="icon-sidebar"  name="fas fa-hands-helping" />
-            </q-item-section>info-
+            </q-item-section>
             <q-item-section class="sidenav-child">Balances</q-item-section>
           </q-item>
           <q-item clickable v-ripple>
@@ -232,7 +232,19 @@
                     </div>
                   </q-slide-transition>
                 </q-card>
-                <q-card class="my-card" flat bordered>
+                <div v-if="serverError" data-testid="server-error">
+                  {{ serverError }}
+                </div>
+
+                <div v-else-if="chats.length === 0" data-testid="no-chats">
+                  No chats!
+                </div>
+                <div v-else>
+                <q-card class="my-card" flat bordered
+                        v-for="chat in chats"
+                        v-bind:key="chat.id"
+                        :data-testid="'chats-' + chat.id"
+                >
                   <div class="row  q-pa-sm">
                     <q-badge color="orange" class="card-badge">22</q-badge>
                     <p class="card-date">Jan 2,12:31pm</p>
@@ -262,116 +274,12 @@
                     <div v-show="expanded">
                       <q-separator />
                       <q-card-section class="text-subitle2">
-                        {{ lorem }}
+                        {{ chat.content }}
                       </q-card-section>
                     </div>
                   </q-slide-transition>
                 </q-card>
-                <q-card class="my-card" flat bordered>
-                  <div class="row  q-pa-sm">
-                    <q-badge color="orange" class="card-badge">22</q-badge>
-                    <p class="card-date">Jan 2,12:31pm</p>
-                  </div>
-                  <q-card-section>
-                    <div class="text-h5 q-mt-sm q-mb-xs">James Robinson</div>
-                    <div class="text-caption text-grey">
-                      I need some maintainance..
-                    </div>
-                  </q-card-section>
-
-                  <q-card-actions>
-
-                    <q-space />
-
-                    <q-btn
-                      color="grey"
-                      round
-                      flat
-                      dense
-                      :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
-                      @click="expanded = !expanded"
-                    />
-                  </q-card-actions>
-
-                  <q-slide-transition>
-                    <div v-show="expanded">
-                      <q-separator />
-                      <q-card-section class="text-subitle2">
-                        {{ lorem }}
-                      </q-card-section>
-                    </div>
-                  </q-slide-transition>
-                </q-card>
-                <q-card class="my-card" flat bordered>
-                  <div class="row  q-pa-sm">
-                    <q-badge color="orange" class="card-badge">22</q-badge>
-                    <p class="card-date">Jan 2,12:31pm</p>
-                  </div>
-                  <q-card-section>
-                    <div class="text-h5 q-mt-sm q-mb-xs">James Robinson</div>
-                    <div class="text-caption text-grey">
-                      I need some maintainance..
-                    </div>
-                  </q-card-section>
-
-                  <q-card-actions>
-
-                    <q-space />
-
-                    <q-btn
-                      color="grey"
-                      round
-                      flat
-                      dense
-                      :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
-                      @click="expanded = !expanded"
-                    />
-                  </q-card-actions>
-
-                  <q-slide-transition>
-                    <div v-show="expanded">
-                      <q-separator />
-                      <q-card-section class="text-subitle2">
-                        {{ lorem }}
-                      </q-card-section>
-                    </div>
-                  </q-slide-transition>
-                </q-card>
-                <q-card class="my-card" flat bordered>
-                  <div class="row  q-pa-sm">
-                    <q-badge color="orange" class="card-badge">22</q-badge>
-                    <p class="card-date">Jan 2,12:31pm</p>
-                  </div>
-                  <q-card-section>
-                    <div class="text-h5 q-mt-sm q-mb-xs">James Robinson</div>
-                    <div class="text-caption text-grey">
-                      I need some maintainance..
-                    </div>
-                  </q-card-section>
-
-                  <q-card-actions>
-
-                    <q-space />
-
-                    <q-btn
-                      color="grey"
-                      round
-                      flat
-                      dense
-                      :icon="expanded ? 'keyboard_arrow_up' : 'keyboard_arrow_down'"
-                      @click="expanded = !expanded"
-                    />
-                  </q-card-actions>
-
-                  <q-slide-transition>
-                    <div v-show="expanded">
-                      <q-separator />
-                      <q-card-section class="text-subitle2">
-                        {{ lorem }}
-                      </q-card-section>
-                    </div>
-                  </q-slide-transition>
-                </q-card>
+                </div>
               </q-tab-panel>
             </q-tab-panels>
           </q-card>
@@ -404,7 +312,8 @@ export default {
       payments: '50',
       visits: '500',
       errors: '200',
-
+      chats: [],
+      serverError: null,
 
     }
   },
@@ -412,6 +321,17 @@ export default {
     onItemClick () {
       // console.log('Clicked on an Item')
     }
-  }
+  },
+  created() {
+    fetch("/api/chats")
+      .then(res => res.json())
+      .then(json => {
+        if (json.error) {
+          this.serverError = json.error
+        } else {
+          this.chats = json.chats
+        }
+      })
+  },
 }
 </script>
