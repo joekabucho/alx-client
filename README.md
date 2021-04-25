@@ -2,7 +2,7 @@
 
 alx assessment
 ## Project link
-[click me](https://github.com/user/repo/blob/branch/other_file.md)
+[click me](http://104.248.16.80:7007/#/)
 
 ## Install the dependencies
 ```bash
