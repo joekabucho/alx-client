@@ -1,8 +1,8 @@
 <template>
-  <q-page>
+  <q-page class="q-pa-lg">
     <div class="row flex-inline">
       <q-icon name="waving_hand" class="waving-hand" size="md" color="orange"></q-icon>
-    <h3 class="intro-header">Hey User</h3>
+      <h3 class="intro-header">Hey User</h3>
     </div>
     <div class="row flex-inline">
       <h2 class="intro-title">Your dummy dashboard</h2>
@@ -32,13 +32,13 @@
     <div class="row flex-inline ">
       <q-card class="chart-card col-lg-12 bar-card">
         <q-card-section>
-            <BarChart/>
+          <BarChart/>
         </q-card-section>
       </q-card>
     </div>
     <br>
     <br>
-    <div class="row flex-inline">
+    <div class="row flex-inline ">
       <q-card class="info-card col-lg-6">
         <q-card-section>
 
@@ -62,13 +62,13 @@
           <p class="siccess-rate">Payment Issues</p>
           <PaymentChart/>
           <div class="row flex-inline">
-          <p class="error-rate">Total number of errors:19</p>
+            <p class="error-rate">Total number of errors:19</p>
           </div>
           <q-list dense>
             <q-item clickable v-ripple>
               <q-item-section>
                 <div class="row flex-inline">
-                <q-badge class="badge-li-1" text-color="white" label="a" />
+                  <q-badge class="badge-li-1" text-color="white" label="a" />
                   <legend class="payment-li"> customer errors</legend>
                 </div>
               </q-item-section>
@@ -77,7 +77,7 @@
             <q-item clickable v-ripple>
               <q-item-section>
                 <div class="row flex-inline">
-                <q-badge class="badge-li-2" text-color="white" label="x" />
+                  <q-badge class="badge-li-2" text-color="white" label="x" />
                   <p class="payment-li">Fraud blocks</p>
                 </div>
               </q-item-section>
@@ -86,7 +86,7 @@
             <q-item clickable v-ripple>
               <q-item-section>
                 <div class="row flex-inline">
-                <q-badge class="badge-li-3" text-color="white" label="o" />
+                  <q-badge class="badge-li-3" text-color="white" label="o" />
                   <legend class="payment-li">Bank Errors</legend>
                 </div>
               </q-item-section>
@@ -94,7 +94,7 @@
             <q-item clickable v-ripple>
               <q-item-section>
                 <div class="row flex-inline">
-                <q-badge class="badge-li-4" text-color="white" label="n" />
+                  <q-badge class="badge-li-4" text-color="white" label="n" />
                   <legend class="payment-li">System Errors</legend>
                 </div>
               </q-item-section>
