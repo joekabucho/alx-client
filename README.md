@@ -32,21 +32,25 @@ Sometimes it’s helpful to know what all these different files are for…
 ```
 ├── public/                  # pure static assets (directly copied)
 ├── src/
+│   ├── assets/
+|   |   ├── mock ── bar-data.js       #charts mock data
+|   │   │        └──doughnut-data.js    #charts mock data
+|   │   │        └──payment-issues.js   #charts mock data
+|   │   └── quasar.variables.styl # Quasar Stylus variables for you to tweak
+|   │   └── server.js       # mock api
 │   ├── assets/              # dynamic assets (processed by webpack)
 │   ├── components/          # .vue components used in pages & layouts
 │   ├── css/                 # CSS/Stylus/Sass/... files for your app
 |   |   ├── app.styl
 |   │   └── quasar.variables.styl # Quasar Stylus variables for you to tweak
-│   ├── layouts/             # layout .vue files
-│   ├── pages/               # page .vue files
-│   ├── boot/                # boot files (app initialization code)
+│   ├── layouts/MainLayout.vue             # layout .vue files
+│   ├── pages/PageDashboard.vue            # page .vue files
+│   ├── boot/main.js                # boot files (app initialization code)
 │   ├── router/              # Vue Router
 |   |   ├── index.js         # Vue Router definition
 |   │   └── routes.js        # App Routes definitions
 │   ├── store/               # Vuex Store
 |   |   ├── index.js         # Vuex Store definition
-|   │   ├── <folder>         # Vuex Store Module...
-|   │   └── <folder>         # Vuex Store Module...
 │   ├── App.vue              # root Vue component of your App
 │   └── index.template.html  # Template for index.html
 ├── src-ssr/                 # SSR specific code (like production Node webserver)
@@ -55,9 +59,7 @@ Sometimes it’s helpful to know what all these different files are for…
 ├── src-electron/            # Electron specific code (like "main" thread)
 ├── src-bex/                 # BEX (browser extension) specific code (like "main" thread)
 ├── dist/                    # where production builds go
-│   ├── spa/                 # example when building SPA
-│   ├── ssr/                 # example when building SSR
-│   ├── electron/            # example when building Electron
+│   ├── pwa/                 # example when building PWA
 │   └── ....
 ├── quasar.conf.js           # Quasar App Config file
 ├── babel.config.js          # Babeljs config
