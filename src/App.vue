@@ -9,7 +9,7 @@
       No tests!
     </div>
 
-    <div v-else>
+    <div v-else hidden>
       <ul id="tests">
         <li
           v-for="test in tests"

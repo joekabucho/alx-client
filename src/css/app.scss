@@ -235,7 +235,8 @@ hr {
   letter-spacing: normal;
   text-align: left;
   color: #828282;
-  border: none;
+  outline: none;
+  box-shadow: none;
 }
 .siccess-rate {
   height: 20px;
@@ -362,15 +363,18 @@ hr {
   position: fixed;
   width: 200px;
   height: 900px;
-  overflow: hidden;
+  background: white;
 }
 .bar-card {
   height: 180px;
 }
+
 @media (max-width: 907px) {
   .flat-icon{
     display: inline;
   }
   .sidenav {padding-top: 15px;}
-
+  .drawer{
+    position: absolute;
+  }
 }
