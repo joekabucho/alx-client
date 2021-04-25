@@ -5,7 +5,7 @@
       <q-toolbar>
         <q-btn dense flat round icon="menu" class="flat-icon" @click="left = !left" />
         <q-toolbar-title>
-          <h4 class="Test lt-md">Test</h4>
+          <h4 class=" lt-md">Test</h4>
         </q-toolbar-title>
         <q-btn dense flat round icon="menu" class="flat-icon" @click="right = !right" />
 
@@ -17,9 +17,10 @@
           <q-toggle
             v-model="value"
             color="green"
-            label="Live"
+            :label="label"
             size="xl"
             class="gt-sm"
+            @toggle="onToggle"
           />
           <div class="q-pa-md gt-sm">
               <q-btn-dropdown   no-caps  class="language-dropdown" label="English" dropdown-icon="fas fa-chevron-down">
@@ -261,6 +262,7 @@ export default {
       left: false,
       right: false,
       value: true,
+      label: 'Live',
       tab: 'two',
       expanded: false,
       slide: 'style',
@@ -279,6 +281,11 @@ export default {
   methods: {
     onItemClick () {
       // console.log('Clicked on an Item')
+    },
+    onToggle() {
+      if (this.value === false) {
+        this.label = "Offline";
+      }
     }
   },
   mounted() {

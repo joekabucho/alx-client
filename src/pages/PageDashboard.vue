@@ -116,19 +116,21 @@ export default {
   name: 'PageDashboard',
   data () {
     return {
+      //api arrays
       payment_issue: [],
       success_rate: [],
-
       serverError: null,
 
     }
   },
   components: {
+    //import components
     BarChart,
     DoughnutChart,
     PaymentChart,
   },
   created() {
+    //oninit hook
     fetch("/api/payment_issue")
       .then(res => res.json())
       .then(json => {
