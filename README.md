@@ -72,7 +72,11 @@ Sometimes it’s helpful to know what all these different files are for…
 ├── package.json             # npm scripts and dependencies
 └── README.md                # readme for your website/App
 ```
-##interfaces
+
+
+interfaces
+
+
 pc view
 
 ![alt text](https://github.com/joekabucho/alx-client/blob/main/public/tutorial/CPT2104250942-1904x918.gif?raw=true)
@@ -83,7 +87,9 @@ mobile/tab view
 ![alt text](https://github.com/joekabucho/alx-client/blob/main/public/tutorial/CPT2104251003-1910x932.gif?raw=true)
 
 
-##tests
+tests
+
+
 The project has dummy api st up uding mirageJS to build mock API requests
 you can tests one default request using
 
